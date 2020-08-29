@@ -10,7 +10,7 @@ import com.casino.app.models.entity.User;
 
 @Service
 public class UserServiceImpl implements IUserService{
-
+	
 	@Autowired
 	private IUserDao userDao;
 
@@ -18,12 +18,9 @@ public class UserServiceImpl implements IUserService{
 	public List<User> findAll() {
 		return userDao.findAll();
 	}
-
 	@Override
 	public User findById(int id) {
 		return userDao.findById(id);
 	}
-	
-	
-	
+
 }

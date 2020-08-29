@@ -113,6 +113,8 @@ public class BoardController {
 	
 	@PostMapping("/bet/{idRoulette}")
 	public String makeBet(@ModelAttribute("bet") Bet bet, @PathVariable(value= "idRoulette") int id, @ModelAttribute("user") User user, Model model, SessionStatus status, RedirectAttributes attrs) {
+		boolean resultColor = false;
+		boolean resultNumber = false;
 		Bet newBet = new Bet();
 		newBet.setRouletteid(id);
 		newBet.setUserid(user.getId());
@@ -122,8 +124,6 @@ public class BoardController {
 		NumberRouletteEnum value = NumberRouletteEnum.ramdomEnum();
 		newBet.setColorResult(value.getColor());
 		newBet.setNumberResult(value.getValue());
-		boolean resultColor = false;
-		boolean resultNumber = false;
 		if(!bet.getColor().equals("empty")) {
 			resultColor = bet.getColor().equals(value.getColor());
 			newBet.setWin(resultColor);
@@ -140,5 +140,4 @@ public class BoardController {
 		}
 		return "redirect:/";
 	}
-
 }

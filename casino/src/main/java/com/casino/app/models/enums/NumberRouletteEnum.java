@@ -48,35 +48,27 @@ public enum NumberRouletteEnum {
 	
 	private int value;
 	private String color;
-
     private NumberRouletteEnum(int value, String color) {
 		this.value = value;
 		this.color = color;
 	}
-
 	public String getColor() {
 		return color;
 	}
-	
     public int getValue() {
         return value;
     }
-
 	public static List<Number> createListValues(){
     	List<Number> list = new ArrayList<>();
-    	
     	for (NumberRouletteEnum obj : NumberRouletteEnum.values()) { 
     	    Number numb = new Number();
     	    numb.setNumber(obj.getValue());
     	    numb.setColor(obj.getColor());
     	    list.add(numb);
     	}
-    	
     	return list;
     }
-	
 	public static NumberRouletteEnum ramdomEnum() {
 		return NumberRouletteEnum.values()[new Random().nextInt(NumberRouletteEnum.values().length)];
 	}
-
 }

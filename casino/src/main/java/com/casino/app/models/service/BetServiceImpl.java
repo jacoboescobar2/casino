@@ -1,10 +1,8 @@
 package com.casino.app.models.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.casino.app.models.dao.IBetDao;
 import com.casino.app.models.entity.Bet;
 

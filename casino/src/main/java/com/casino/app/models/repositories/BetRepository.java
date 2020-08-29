@@ -2,12 +2,10 @@ package com.casino.app.models.repositories;
 
 import java.sql.ResultSet;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
 import com.casino.app.models.dao.IBetDao;
 import com.casino.app.models.entity.Bet;
 

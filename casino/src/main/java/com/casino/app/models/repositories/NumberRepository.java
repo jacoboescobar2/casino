@@ -2,12 +2,10 @@ package com.casino.app.models.repositories;
 
 import java.sql.ResultSet;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
 import com.casino.app.models.dao.INumberDao;
 import com.casino.app.models.entity.Number;
 import com.casino.app.models.enums.NumberRouletteEnum;
@@ -40,7 +38,6 @@ public class NumberRepository implements INumberDao{
 				    	"INSERT INTO numbers (number, color, rouletteid) VALUES (?, ?, ?)",
 				    		lst.get(i).getNumber(), lst.get(i).getColor(), idRoulette);
 		}
-		
 		return result;
 	}
 }

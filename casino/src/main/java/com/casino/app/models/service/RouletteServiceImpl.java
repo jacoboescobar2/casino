@@ -18,22 +18,18 @@ public class RouletteServiceImpl implements IRouletteService {
 	public List<Roulette> findAll() {
 		return rouletteDao.findAll();
 	}
-
 	@Override
 	public int addRoulette() {
 		return rouletteDao.addRoulette();
 	}
-
 	@Override
 	public int openRoulette(Roulette rou) {
 		return rouletteDao.openRoulette(rou);
 	}
-
 	@Override
 	public int closeRoulette(Roulette rou) {
 		return rouletteDao.closeRoulette(rou);
 	}
-
 	@Override
 	public Roulette findById(int id) {
 		return rouletteDao.findById(id);

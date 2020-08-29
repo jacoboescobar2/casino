@@ -15,5 +15,4 @@ public interface IRouletteDao {
 	public int openRoulette(Roulette rou);
 	
 	public int closeRoulette(Roulette rou);
-	
 }

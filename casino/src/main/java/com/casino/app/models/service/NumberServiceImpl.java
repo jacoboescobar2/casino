@@ -18,7 +18,6 @@ public class NumberServiceImpl implements INumberService{
 	public List<Number> findByRoulette(int id) {
 		return numberDao.findByRoulette(id);
 	}
-
 	@Override
 	public int createNumbersRoulette(int idRoulette) {
 		return numberDao.createNumbersRoulette(idRoulette);

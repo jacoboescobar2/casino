@@ -9,5 +9,4 @@ public interface INumberDao {
 	public List<Number> findByRoulette(int id);
 	
 	public int createNumbersRoulette(int idRoulette);
-
 }

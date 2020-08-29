@@ -1,7 +1,6 @@
 package com.casino.app.models.service;
 
 import java.util.List;
-
 import com.casino.app.models.entity.Bet;
 
 public interface IBetService {

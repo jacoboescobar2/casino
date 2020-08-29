@@ -13,5 +13,4 @@ public interface IBetDao {
 	public int insertBet(Bet bet);
 	
 	public int deleteBetByIdUser(Bet bet);
-	
 }
