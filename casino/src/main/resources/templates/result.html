@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div class="container m-5">
+		<h3
+			th:text="'Estos son sus resultados de la Ruleta # ' + ${rouletteid}"></h3>
+	</div>
+
+	<div class="container m-5">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Apuesta</th>
+					<th scope="col">Número apostado</th>
+					<th scope="col">Color apostado</th>
+					<th scope="col">Número resultado</th>
+					<th scope="col">Color resultado</th>
+					<th scope="col">Gana</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="betsResult: ${betsResults}">
+					<td th:text="${betsResult.id}"></td>
+					<td th:text="${betsResult.number}"></td>
+					<td th:text="${betsResult.color}"></td>
+					<td th:text="${betsResult.numberResult}"></td>
+					<td th:text="${betsResult.colorResult}"></td>
+					<td th:text="${betsResult.win}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<button
+		th:onclick="|window.location.href='@{/}'|"
+		class="btn btn-warning">Volver</button>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

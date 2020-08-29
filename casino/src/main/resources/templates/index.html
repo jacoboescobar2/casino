@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div th:if="${idRoulette}"
+		th:text="'Se ha creado la Ruleta # ' + ${idRoulette} + ' con exito'"
+		class="alert alert-success" role="alert"></div>
+
+	<div th:if="${idRouletteOpen}"
+		th:text="'Se ha abierto la Ruleta # ' + ${idRouletteOpen} + ' con exito'"
+		class="alert alert-success" role="alert"></div>
+
+	<div th:if="${closeRoulette}"
+		th:text="'Se ha abierto la Ruleta # ' + ${idRouletteOpen} + ' con exito'"
+		class="alert alert-alert" role="alert">
+		<div th:each="bet: ${betsResults}"></div>
+		</div>
+
+	<div class="container m-5">
+		<a th:href="@{/new-roulette}" class="btn btn-primary">Crear nueva
+			Ruleta</a>
+	</div>
+
+	<div th:object="${user}" class="container m-5">
+
+		<div class="row row-cols-1 row-cols-md-3">
+			<div th:each="roulette: ${roulettes}" class="col mb-4">
+				<div class="card h-100">
+					<img style="width: 60%; margin: auto;" src="/images/roulette.png"
+						class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title" th:text="'Ruleta ' + ${roulette.id}"></h5>
+						<div th:if="${roulette.state}">
+							<form th:action="@{/bet/}+${roulette.id}" th:object="${bet}"
+								method="post" enctype="multipart/form-data">
+								<p class="card-text">Apuesta</p>
+								<div class="form-group">
+									<label for="number">Número</label> <select class="form-control"
+										id="number" th:field="*{number}">
+										<option th:value="-1">-- Sin apuesta por número --</option>
+										<option th:each="num: ${lstnumber}" th:text="${num.number}"
+											th:value="${num.number}"></option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="color">Color</label> <select class="form-control"
+										id="color" th:field="*{color}">
+										<option th:value="empty">-- Sin apuesta por color --</option>
+										<option value="Negro">Negro</option>
+										<option value="Rojo">Rojo</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Dinero</label> <input type="number" class="form-control"
+										placeholder="0" th:field="*{bet}" />
+								</div>
+								<input class="btn btn-primary" type="submit" value="Apostar" />
+							</form>
+
+						</div>
+						<div th:if="${!roulette.state}">
+							<p class="card-text">Resultados</p>
+						</div>
+						<br>
+						<button
+							th:onclick="|window.location.href='@{/openRoulette/}'+'${roulette.id}'|"
+							th:disabled="${roulette.state}" class="btn btn-success">Abrir</button>
+						<button
+							th:onclick="|window.location.href='@{/closeRoulette/}'+'${roulette.id}'|"
+							th:disabled="${!roulette.state}" class="btn btn-danger">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

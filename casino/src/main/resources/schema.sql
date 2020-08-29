@@ -1,19 +1,18 @@
 CREATE TABLE roulettes (
 id INT NOT NULL PRIMARY KEY auto_increment,
-estate BOOLEAN NOT NULL
+state BOOLEAN NOT NULL,
+open DATETIME NULL,
+closed DATETIME NULL 
 );
 
 CREATE TABLE numbers (
 id INT NOT NULL PRIMARY KEY auto_increment,
 number INT NOT NULL,
-color VARCHAR(40) NOT NULL
+color VARCHAR(40) NOT NULL,
+rouletteid INT,
+CONSTRAINT fk_roulette FOREIGN KEY (rouletteid) REFERENCES roulettes(id)
 );
 
-CREATE TABLE boards (
-id INT NOT NULL PRIMARY KEY auto_increment,
-rouletteid INT REFERENCES roulettes(id),
-numbersid INT REFERENCES numbers(number)
-);
 
 CREATE TABLE users (
 id INT NOT NULL PRIMARY KEY auto_increment,
@@ -26,6 +25,12 @@ id INT NOT NULL PRIMARY KEY auto_increment,
 bet DOUBLE NOT NULL,
 number INT NULL,
 color VARCHAR(40) NULL,
-userid INT REFERENCES users(id),
-rouletteid INT REFERENCES roulettes(id)
+date DATETIME NOT NULL,
+win BOOLEAN NULL,
+colorresult VARCHAR(40) NULL,
+numberresult INT NULL,
+userid INT,
+rouletteid INT,
+CONSTRAINT fk_user FOREIGN KEY (userid) REFERENCES users(id),
+CONSTRAINT fk_roulette_bet FOREIGN KEY (rouletteid) REFERENCES roulettes(id)
 );
